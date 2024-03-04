@@ -1,43 +1,19 @@
-// import './App.css';
-// import Navbar from "./components/Navbar";
-// import Chatbox from "./components/Chatbox";
-// import Welcome from "./components/Welcome";
-// import  {auth} from "./firebase";
-// import  {useAuthState} from "react-firebase-hooks/auth";
-
-// function App() {
-//   const [user] = useAuthState(auth);
-
-//   return (
-//     <div>
-//       <Navbar />
-//       { !user ? <Welcome/> : <Chatbox />}
-//     </div>
-//   )
-// }
-
-// export default App;
 import "./App.css";
-import NavBar from "./components/Navbar";
-import ChatBox from "./components/Chatbox";
-import Welcome from "./components/Welcome";
-import { useState } from "react";
+import React from 'react'; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Chat from "./pages/Chat";
+import Profile from "./pages/UserProfile";
 
 function App() {
-  const [user, setUser] = useState(false);
-
   return (
-    <div className="App">
-      <NavBar />
-      {!user ? (
-        <Welcome />
-      ) : (
-        <>
-          <ChatBox />
-        </>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={ <Chat /> } /> 
+        <Route path="/chat" element={ <Chat /> } /> 
+        <Route path="/profile" element={ <Profile/>} /> 
+      </Routes>
+    </Router>
   );
 }
-
 export default App;
+
